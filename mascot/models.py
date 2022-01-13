@@ -32,7 +32,7 @@ class Region(models.TextChoices):
 
 
 class Character(TimestampedModel):
-    region = models.CharField(max_length=10, db_index=True, verbose_name="지역")
+    region = models.CharField(max_length=10, choices=Region.choices, db_index=True, verbose_name="지역")
     city = models.CharField(max_length=10, blank=True, db_index=True, verbose_name="시·군·구")
     charming = models.PositiveSmallIntegerField(
         validators=[
