@@ -17,7 +17,7 @@ def post_list(request):
         {
             "id": post.id,
             "title": post.title,
-            "content": post.content
+            "content": post.content,
         }
         for post in qs
     ]
