@@ -41,7 +41,7 @@ class Character(TimestampedModel):
     )
     name = models.CharField(max_length=10, db_index=True, verbose_name="이름")
     explain = models.TextField(verbose_name="설명")
-    photo = models.ImageField(upload_to="mascot/character/%Y/%M/%d", verbose_name="사진")
+    photo = models.ImageField(upload_to="mascot/character/%Y/%M/%d", blank=True, verbose_name="사진")
 
     def __str__(self):
         return self.name

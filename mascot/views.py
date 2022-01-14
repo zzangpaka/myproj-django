@@ -16,8 +16,12 @@ def character_list(request):
     data = [
         {
             "id": character.id,
+            "region": character.region,
+            "city": character.city,
+            "charming": character.charming,
             "name": character.name,
-            "explain": character.explain
+            "explain": character.explain,
+            "photo": character.photo,
         }
         for character in qs
     ]
