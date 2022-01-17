@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'news',
     'shop',
     'rest_framework',
+    'rest_framework_simplejwt',
     "corsheaders",
 ]
 
@@ -136,3 +137,12 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # django-cors-headers
 CORS_ALLOWED_ORIGINS = ["http://localhost:3000"]
+
+# djangorestframework
+# DRF의 디폴트 설정을 재정의
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.SessionAuthentication',
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ],
+}
