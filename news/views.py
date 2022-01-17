@@ -1,14 +1,10 @@
 import json
 
 from django.http import HttpResponse
-<<<<<<< HEAD
 from rest_framework.viewsets import ModelViewSet
 # from news.serializers import ArticleAnonymousSerializer, ArticleGoldMembershipSerializer, ArticleAdminSerializer
-=======
 from rest_framework import viewsets
 from rest_framework.permissions import AllowAny, IsAuthenticated
-
->>>>>>> 9d418e5fcfc0cdec8f4430be28293cb706508c0a
 from news.serializers import ArticleSerializer
 from news.models import Article
 from rest_framework.generics import ListAPIView
