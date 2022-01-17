@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
+from datetime import timedelta
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -37,10 +38,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'accounts',
     'blog',
+    'mascot',
     'news',
     'shop',
     'rest_framework',
+    'rest_framework_simplejwt',
     "corsheaders",
 ]
 
@@ -125,8 +129,8 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-MEDIA = '/media/'
-MEDIA_ROOT = BASE_DIR / 'media'
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR/'media'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
@@ -135,3 +139,14 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # django-cors-headers
 CORS_ALLOWED_ORIGINS = ["http://localhost:3000"]
+
+# djangorestframework
+# DRF의 디폴트 설정을 재정의
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.SessionAuthentication',
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ],
+    # 디폴트 만료시간 :
+    'ACCESS_TOKEN_LIFETIME': timedelta(days=7),
+}

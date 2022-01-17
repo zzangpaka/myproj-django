@@ -1,8 +1,14 @@
 import json
 
 from django.http import HttpResponse
+<<<<<<< HEAD
 from rest_framework.viewsets import ModelViewSet
 # from news.serializers import ArticleAnonymousSerializer, ArticleGoldMembershipSerializer, ArticleAdminSerializer
+=======
+from rest_framework import viewsets
+from rest_framework.permissions import AllowAny, IsAuthenticated
+
+>>>>>>> 9d418e5fcfc0cdec8f4430be28293cb706508c0a
 from news.serializers import ArticleSerializer
 from news.models import Article
 from rest_framework.generics import ListAPIView
@@ -11,6 +17,8 @@ from rest_framework.generics import ListAPIView
 class ArticleViewSet(ModelViewSet):
     queryset = Article.objects.all()
     serializer_class = ArticleSerializer
+    # permission_classes = [AllowAny] # DRF 디폴트 설정(누구나)
+    permission_classes = [IsAuthenticated] # 인증 된 누구나
 
     # def get_serializer_class(self):
     #     # return ArticleAnonymousSerializer
